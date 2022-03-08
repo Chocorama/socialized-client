@@ -4,7 +4,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { gql, useMutation } from '@apollo/client';
 
 const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
-  const [liked, setLiked] = useState(false);
+  const [setLiked] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handlePopoverOpen = (e) => {
@@ -22,7 +22,7 @@ const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
     } else {
       setLiked(false);
     }
-  }, [likes, user]);
+  }, [setLiked, likes, user]);
 
   const [likePost] = useMutation(LIKE_POST_MUTATION, {
     variables: {

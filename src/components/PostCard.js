@@ -1,25 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import moment from 'moment';
 import {
   Card,
   CardContent,
   Typography,
   CardActions,
-  Button,
   Avatar,
   CardHeader,
   IconButton,
   Badge,
   Grow,
-  Collapse,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
 } from '@mui/material';
 
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/system';
 
@@ -28,16 +21,7 @@ import LikeButton from './LikeButton';
 import DeleteButton from './DeleteButton';
 
 const PostCard = ({
-  post: {
-    body,
-    createdAt,
-    id,
-    username,
-    likeCount,
-    commentCount,
-    likes,
-    comments,
-  },
+  post: { body, createdAt, id, username, likeCount, commentCount, likes },
 }) => {
   const { user } = useContext(AuthContext);
 
@@ -45,9 +29,9 @@ const PostCard = ({
     console.log(`Post by ${username} commented on by you`);
   };
 
-  const deletePost = () => {
-    console.log('deleted');
-  };
+  // const deletePost = () => {
+  //   console.log('deleted');
+  // };
 
   return (
     <>
