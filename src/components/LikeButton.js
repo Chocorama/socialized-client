@@ -4,7 +4,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { gql, useMutation } from '@apollo/client';
 
 const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
-  const [setLiked] = useState(false);
+  // const [liked, setLiked] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handlePopoverOpen = (e) => {
@@ -16,13 +16,13 @@ const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
   };
 
   // check if theres a user and if there is, check if current logged in user equals posts likes user
-  useEffect(() => {
-    if (user && likes.find((like) => like.username === user.username)) {
-      setLiked(true);
-    } else {
-      setLiked(false);
-    }
-  }, [setLiked, likes, user]);
+  // useEffect(() => {
+  //   if (user && likes.find((like) => like.username === user.username)) {
+  //     setLiked(true);
+  //   } else {
+  //     setLiked(false);
+  //   }
+  // }, [setLiked, likes, user]);
 
   const [likePost] = useMutation(LIKE_POST_MUTATION, {
     variables: {
