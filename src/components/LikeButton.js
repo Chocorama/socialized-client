@@ -8,17 +8,14 @@ const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handlePopoverOpen = (e) => {
-    console.log(e);
     setAnchorEl(e.currentTarget);
   };
 
-  const handlePopoverClose = (e) => {
-    e.preventDefault();
-    console.log('hi');
+  const handlePopoverClose = () => {
     setAnchorEl(null);
   };
 
-  //   check if theres a user and if there is, check if current loggen in user equals posts likes user
+  // check if theres a user and if there is, check if current logged in user equals posts likes user
   useEffect(() => {
     if (user && likes.find((like) => like.username === user.username)) {
       setLiked(true);
@@ -38,29 +35,34 @@ const LikeButton = ({ user, post: { id, likeCount, likes } }) => {
   return (
     <>
       <IconButton
+        aria-owns={open ? 'mouse-over-popover' : undefined}
+        aria-haspopup='true'
         onClick={likePost}
+        onMouseLeave={handlePopoverClose}
         onMouseEnter={handlePopoverOpen}
-        // onMouseLeave={handlePopoverClose}
       >
         <Badge color='secondary' badgeContent={likeCount}>
           <ThumbUpOffAltIcon />
         </Badge>
       </IconButton>
       <Popover
+        sx={{
+          pointerEvents: 'none',
+        }}
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: 'top',
+          vertical: 'bottom',
           horizontal: 'left',
         }}
         transformOrigin={{
-          vertical: 'bottom',
+          vertical: 'top',
           horizontal: 'left',
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography>Testing</Typography>
+        <Typography>Like a post!</Typography>
       </Popover>
     </>
   );

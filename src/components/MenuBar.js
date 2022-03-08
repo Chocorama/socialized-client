@@ -25,7 +25,6 @@ const MenuBar = () => {
   }, [setActiveItem, location.pathname]);
 
   function LinkTab(props) {
-    // we do this extra function so that we dont have to write in component=a and event function every single time, the only thing changing is in linktab props which go to Tab
     return <Tab {...props} component={Link} />;
   }
 

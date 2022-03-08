@@ -9,8 +9,7 @@ import { setContext } from '@apollo/client/link/context';
 import App from './App';
 
 const httpLink = new HttpLink({
-  // uri points to gql server
-  uri: 'http://localhost:5000',
+  uri: 'https://lit-cove-59791.herokuapp.com/',
 });
 
 const authLink = setContext((_, { headers }) => {
